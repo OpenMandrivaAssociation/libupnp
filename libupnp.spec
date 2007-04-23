@@ -1,5 +1,5 @@
 %define name	libupnp
-%define version	1.4.2
+%define version	1.4.4
 %define release %mkrel 1
 
 %define major	0
