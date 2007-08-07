@@ -1,5 +1,5 @@
 %define name	libupnp
-%define version	1.4.4
+%define version	1.6.0
 %define release %mkrel 1
 
 %define major	0
@@ -60,16 +60,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname}
 %defattr(-,root,root)
+%doc AUTHORS COPYING LICENSE NEWS README THANKS TODO
 %{_libdir}/*.so.*
-%{_defaultdocdir}/%{name}-%{version}/LICENSE
-%{_defaultdocdir}/%{name}-%{version}/NEWS
-%{_defaultdocdir}/%{name}-%{version}/README
-%{_defaultdocdir}/%{name}-%{version}/THANKS
-%{_defaultdocdir}/%{name}-%{version}/TODO
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
-%doc LICENSE README
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.a
