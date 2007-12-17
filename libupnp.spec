@@ -14,7 +14,6 @@ Source:		http://prdownloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
 URL:		http://pupnp.sourceforge.net/
 License:	BSD
 Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 The Linux SDK for UPnP Devices (libupnp) provides developers with an API and
