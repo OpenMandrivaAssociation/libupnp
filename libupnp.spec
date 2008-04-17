@@ -1,77 +1,77 @@
-%define name	libupnp
-%define version	1.6.3
-%define release %mkrel 1
+%define major 3
+%define minor 2
+%define libname %mklibname upnp %{major}
+%define develname %mklibname upnp -d
 
-%define major	0
-%define libname %mklibname upnp %major
-
-Name: 	 	%{name}
-Summary: 	Library and tools for the UPnP protocol
-Version: 	%{version}
-Release: 	%{release}
-
-Source:		http://prdownloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
-URL:		http://pupnp.sourceforge.net/
+Summary:	Library and tools for the UPnP protocol
+Name:		libupnp
+Version:	1.6.5
+Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+URL:		http://pupnp.sourceforge.net/
+Source:		http://downloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The Linux SDK for UPnP Devices (libupnp) provides developers with an API and
 open source code for building control points, devices, and bridges that are
-compliant with Version 1.0 of the  Universal Plug and Play Device
+compliant with Version 1.0 of the Universal Plug and Play Device
 Architecture Specification.
 
-%package -n 	%{libname}
-Summary:        Dynamic libraries from %name
+%package -n %{libname}
+Summary:        Library and tools for the UPnP protocol
 Group:          System/Libraries
+Obsoletes:	%mklibname upnp 0
 
 %description -n %{libname}
-Dynamic libraries from %name.
+The Linux SDK for UPnP Devices (libupnp) provides developers with an API and
+open source code for building control points, devices, and bridges that are
+compliant with Version 1.0 of the Universal Plug and Play Device
+Architecture Specification.
 
-%package -n 	%{libname}-devel
-Summary: 	Header files and static libraries from %name
-Group: 		Development/C
-Requires: 	%{libname} >= %{version}
-Provides:	%{name}-devel = %{version}-%{release} 
-Obsoletes: 	%name-devel
+%package -n %{develname}
+Summary:	Header files and static libraries from %name
+Group:		Development/C
+Requires:	%{libname} >= %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%mklibname upnp 0 -d < 1.6.5
+Provides:	%mklibname upnp 0 -d
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
 
 %build
-%configure --with-documentation=$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}-%{version} \
-        --enable-tools\
+%configure2_5x \
+	--with-documentation=%{_docdir}/%{name} \
+        --enable-tools \
         --enable-sample
 %make
-										
+								
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall
+rm -rf %{buildroot}
+%makeinstall_std
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc AUTHORS COPYING LICENSE NEWS README THANKS TODO
-%{_libdir}/*.so.*
+%doc LICENSE NEWS README THANKS TODO
+%{_libdir}/*upnp.so.%{major}*
+%{_libdir}/*.so.%{minor}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/pkgconfig/*pc
-%{_defaultdocdir}/%{name}-%{version}/*Prog*
-%{_defaultdocdir}/%{name}-%{version}/html
-%{_defaultdocdir}/%{name}-%{version}/examples
-
-
+%{_docdir}/%{name}
