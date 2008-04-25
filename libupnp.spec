@@ -6,7 +6,7 @@
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
 Version:	1.6.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD
 Group:		System/Libraries
 URL:		http://pupnp.sourceforge.net/
@@ -35,7 +35,7 @@ Summary:	Header files and static libraries from %name
 Group:		Development/C
 Requires:	%{libname} >= %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%mklibname upnp 0 -d < 1.6.5
+Obsoletes:	%{mklibname upnp 0 -d} < 1.6.5
 Provides:	%mklibname upnp 0 -d
 
 %description -n %{develname}
