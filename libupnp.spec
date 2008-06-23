@@ -5,8 +5,8 @@
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.6.5
-Release:	%mkrel 2
+Version:	1.6.6
+Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
 URL:		http://pupnp.sourceforge.net/
@@ -61,6 +61,7 @@ rm -rf %{buildroot}
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
 %endif
+
 %if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
