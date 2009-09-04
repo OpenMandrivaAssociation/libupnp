@@ -6,7 +6,7 @@
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
 Version:	1.6.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD
 Group:		System/Libraries
 URL:		http://pupnp.sourceforge.net/
