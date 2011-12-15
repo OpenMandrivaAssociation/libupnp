@@ -63,6 +63,5 @@ Libraries and includes files for developing programs based on %name.
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/pkgconfig/*pc
 %{_docdir}/%{name}
