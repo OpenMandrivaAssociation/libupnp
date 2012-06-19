@@ -2,15 +2,16 @@
 %define minor 2
 %define libname %mklibname upnp %{major}
 %define develname %mklibname upnp -d
+%define develnamest %mklibname upnp -d -s
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.6.14
+Version:	1.6.17
 Release:	1
 License:	BSD
 Group:		System/Libraries
 URL:		http://pupnp.sourceforge.net/
-Source:		http://downloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
 
 %description
 The Linux SDK for UPnP Devices (libupnp) provides developers with an API and
@@ -38,7 +39,19 @@ Obsoletes:	%{mklibname upnp 0 -d} < 1.6.6
 Provides:	%mklibname upnp 0 -d
 
 %description -n %{develname}
-Libraries and includes files for developing programs based on %name.
+Libraries and includes static files for developing programs based on %name.
+
+%package -n %{develnamest}
+Summary:	Header files and static libraries from %name
+Group:		Development/C
+Requires:	%{libname} >= %{version}-%{release}
+Provides:	%{name}-devel-static = %{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname upnp 0 -d -s} < 1.6.6
+Provides:	%mklibname upnp 0 -d -s
+
+%description -n %{develnamest}
+Libraries and includes static files for developing programs based on %name.
 
 %prep
 %setup -q
@@ -62,6 +75,8 @@ Libraries and includes files for developing programs based on %name.
 %files -n %{develname}
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
 %{_libdir}/pkgconfig/*pc
 %{_docdir}/%{name}
+
+%files -n %{develnamest}
+%{_libdir}/*.a
