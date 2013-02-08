@@ -48,8 +48,8 @@ Libraries and includes static files for developing programs based on %{name}.
 
 %build
 %configure2_5x \
-		--disable-static \ 
-        --enable-sample
+		--disable-static
+
 %make
 
 %install
