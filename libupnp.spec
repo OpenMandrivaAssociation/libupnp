@@ -2,12 +2,11 @@
 %define minor 2
 %define libname %mklibname upnp %{major}
 %define develname %mklibname upnp -d
-%define develnamest %mklibname upnp -d -s
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.6.17
-Release:	2
+Version:	1.6.18
+Release:	1
 License:	BSD
 Group:		System/Libraries
 URL:		http://pupnp.sourceforge.net/
@@ -37,19 +36,11 @@ Group:		Development/C
 Requires:	%{libname} >= %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname upnp 0 -d} < 1.6.6
+Obsoletes:	%{mklibname upnp -d -s} < 1.6.18-1
+Provides:	%{mklibname upnp -d -s} = %{version}-%{release}
+Provides:	%{name}-devel-static = %{version}-%{release}
 
 %description -n %{develname}
-Libraries and includes static files for developing programs based on %{name}.
-
-%package -n %{develnamest}
-Summary:	Header files and static libraries from %{name}
-Group:		Development/C
-Requires:	%{libname} >= %{version}-%{release}
-Provides:	%{name}-devel-static = %{version}-%{release}
-Requires:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{mklibname upnp 0 -d -s} < 1.6.6
-
-%description -n %{develnamest}
 Libraries and includes static files for developing programs based on %{name}.
 
 %prep
@@ -57,7 +48,8 @@ Libraries and includes static files for developing programs based on %{name}.
 
 %build
 %configure2_5x \
-	--with-documentation=%{_docdir}/%{name} \
+		--disable-static \ 
+		--with-documentation=%{_docdir}/%{name} \
         --enable-tools \
         --enable-sample
 %make
@@ -76,10 +68,6 @@ Libraries and includes static files for developing programs based on %{name}.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*pc
 %{_docdir}/%{name}
-
-%files -n %{develnamest}
-%{_libdir}/*.a
-
 
 %changelog
 * Tue Jun 19 2012 Alexander Khrukin <akhrukin@mandriva.org> 1.6.17-1
