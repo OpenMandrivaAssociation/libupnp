@@ -49,7 +49,6 @@ Libraries and includes static files for developing programs based on %{name}.
 %build
 %configure2_5x \
 		--disable-static \ 
-		--with-documentation=%{_docdir}/%{name} \
         --enable-tools \
         --enable-sample
 %make
