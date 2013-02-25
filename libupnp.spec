@@ -56,16 +56,15 @@ Libraries and includes static files for developing programs based on %{name}.
 %makeinstall_std
 
 %files -n %{libname}
-%doc LICENSE NEWS README THANKS TODO
 %{_libdir}/*upnp.so.%{major}*
 %{_libdir}/*.so.%{minor}*
 %{_libdir}/libthreadutil.so.%{major}*
 
 %files -n %{develname}
+%doc LICENSE NEWS README THANKS TODO
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*pc
-%{_docdir}/%{name}
 
 %changelog
 * Tue Jun 19 2012 Alexander Khrukin <akhrukin@mandriva.org> 1.6.17-1
