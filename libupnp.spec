@@ -7,8 +7,8 @@
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.6.18
-Release:	13
+Version:	1.6.25
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		http://pupnp.sourceforge.net/
@@ -58,16 +58,16 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package includes the development files for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libupnp.so.%{major}*
