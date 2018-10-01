@@ -79,7 +79,7 @@ This package includes the development files for %{name}.
 %{_libdir}/libthreadutil.so.%{major}*
 
 %files -n %{devname}
-%doc LICENSE NEWS README THANKS TODO
+%doc LICENSE NEWS README.md THANKS TODO
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*pc
