@@ -1,14 +1,13 @@
-%define major 6
-%define ixmlmaj 2
+%define major 13
+%define ixmlmaj 10
 %define libname %mklibname upnp %{major}
-%define libthreadutil %mklibname threadutil %{major}
 %define libixml %mklibname ixml %{ixmlmaj}
 %define devname %mklibname upnp -d
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.6.25
-Release:	2
+Version:	1.8.4
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		http://pupnp.sourceforge.net/
@@ -30,14 +29,6 @@ open source code for building control points, devices, and bridges that are
 compliant with Version 1.0 of the Universal Plug and Play Device
 Architecture Specification.
 
-%package -n %{libthreadutil}
-Summary:	Library and tools for the UPnP protocol
-Group:		System/Libraries
-Conflicts:	%{_lib}upnp6 < 1.6.18-2
-
-%description -n %{libthreadutil}
-This package contains a shared library for %{name}.
-
 %package -n %{libixml}
 Summary:	Library and tools for the UPnP protocol
 Group:		System/Libraries
@@ -50,7 +41,6 @@ This package contains a shared library for %{name}.
 Summary:	Header files and static libraries from %{name}
 Group:		Development/C
 Requires:	%{libname} >= %{version}-%{release}
-Requires:	%{libthreadutil} >= %{version}-%{release}
 Requires:	%{libixml} >= %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
@@ -75,11 +65,7 @@ This package includes the development files for %{name}.
 %files -n %{libixml}
 %{_libdir}/libixml.so.%{ixmlmaj}*
 
-%files -n %{libthreadutil}
-%{_libdir}/libthreadutil.so.%{major}*
-
 %files -n %{devname}
-%doc LICENSE NEWS README.md THANKS TODO
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*pc
