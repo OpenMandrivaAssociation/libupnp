@@ -1,12 +1,12 @@
-%define major 13
-%define ixmlmaj 10
+%define major 15
+%define ixmlmaj 11
 %define libname %mklibname upnp %{major}
 %define libixml %mklibname ixml %{ixmlmaj}
 %define devname %mklibname upnp -d
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.8.4
+Version:	1.10.0
 Release:	1
 License:	BSD
 Group:		System/Libraries
