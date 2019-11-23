@@ -6,7 +6,7 @@
 
 Summary:	Library and tools for the UPnP protocol
 Name:		libupnp
-Version:	1.10.0
+Version:	1.10.1
 Release:	1
 License:	BSD
 Group:		System/Libraries
