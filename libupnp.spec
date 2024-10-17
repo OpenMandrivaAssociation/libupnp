@@ -10,7 +10,7 @@ Version:	1.14.18
 Release:	1
 License:	BSD
 Group:		System/Libraries
-Url:		http://pupnp.sourceforge.net/
+Url:		https://pupnp.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
 
 %description
