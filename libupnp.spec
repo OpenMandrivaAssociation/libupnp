@@ -13,6 +13,11 @@ Group:		System/Libraries
 Url:		https://pupnp.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/pupnp/%{name}-%{version}.tar.bz2
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 The Linux SDK for UPnP Devices (libupnp) provides developers with an API and
 open source code for building control points, devices, and bridges that are
